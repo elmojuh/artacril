@@ -7,6 +7,8 @@ export default function SobreNos() {
     }
     const logo = {
         padding: '20px',
+        maxWidth: '100%',
+        height: 'auto',
     }
     const textoCentral = {
         fontSize: '2em',

@@ -30,7 +30,7 @@ function BarraDeNavegacao() {
                     </Nav>
                     <Nav>
                         <Nav.Link href="/sobre-nos">Sobre Nós</Nav.Link>
-                        <Nav.Link eventKey={2} href="#facaUmOrcamento">
+                        <Nav.Link eventKey={2} href="http://wa.me/5521980304952/" target='_blank'>
                             Faça um Orçamento
                         </Nav.Link>
                     </Nav>
