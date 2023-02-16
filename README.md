@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Next.js with react-bootstrap example
 
 This example shows how to use Next.js along with [react-bootstrap](https://react-bootstrap.github.io/).
@@ -25,3 +26,7 @@ pnpm create next-app --example with-react-bootstrap with-react-bootstrap-app
 ```
 
 Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+=======
+# artacril
+Site da Art Acril - Empresa de Expositores em Acrílico
+>>>>>>> 727088f3c33bff328b9f3d9786d0fc89838068c1
