@@ -20,7 +20,7 @@ function CardSobreNos() {
                         <Card.Body>
                             <Card.Text >
                                 A Art Acril se orgulha de sua longa tragetória em sua pequena fábrica de expositores em acrílico do Seu Geovanne.
-                                Que ao longo de 30 anos cria modelos artezanais com o maior gral de sofisticação e requinte.
+                                Que ao longo de 30 anos cria modelos artezanais com o maior grau de sofisticação e requinte.
                                 É reconhecido até hoje como referência em beleza e resistencia de materiais em acrílico de primeira linha
                                 pelos joalheiros e logistas do Rio de Janeiro.
                             </Card.Text>
