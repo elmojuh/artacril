@@ -1,8 +1,8 @@
 import { Col, Container, Image, Row } from "react-bootstrap"
-import CardSobreNos from "../src/components/cardSobreNos"
+import Editorial from "../src/components/editorial"
 
 
-export default function SobreNos() {
+export default function EditorialPage() {
     const espacoPadding = {
         padding: '20px'
     }
@@ -10,7 +10,7 @@ export default function SobreNos() {
         <Container style={espacoPadding}>
             <Row>
                 <Col md={{ span: 8, offset: 2 }}>
-                    <CardSobreNos />
+                    <Editorial />
                 </Col>
                 <Col sm={12} md={12} lg={12}>
                 </Col>

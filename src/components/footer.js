@@ -1,7 +1,7 @@
 
 
 export default function Footer() {
-    const espaco = {
+    const imageStyle = {
         paddingLeft: '10px',
         width: '40px'
     }
@@ -17,7 +17,7 @@ export default function Footer() {
                     className="texto-branco"
                 >
                     Powered by: 
-                    <img style={espaco} src="images/foto.jpg" alt="Vercel Logo"/></a>
+                    <img style={imageStyle} src="images/foto.jpg" alt="@elmojuh"/></a>
                 <a />
             </footer>
         </div>

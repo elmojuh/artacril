@@ -38,7 +38,7 @@ export default function Carrossel() {
             <Carousel.Caption>
               <h3>Expositor Busto Bola</h3>
               <p>
-                Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+                Modelos de diferentes tamanhos para atender as diversas peças
               </p>
             </Carousel.Caption>
           </Carousel.Item>

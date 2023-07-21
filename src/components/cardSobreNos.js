@@ -13,10 +13,9 @@ function CardSobreNos() {
     }
     return (
         <Row xs={1} md={1} lg={1} className="g-4">
-            {Array.from({ length: 1 }).map((_, idx) => (
                 <Col>
                     <Card style={fundoCard}>
-                        <Card.Img variant="top" src="/images/logo/logo_02.png" style={fundoFoto}/>
+                        <Card.Img variant="top" key={1} src="/images/logo/logo_02.png" style={fundoFoto}/>
                         <Card.Body>
                             <Card.Text >
                                 A Art Acril se orgulha de sua longa tragetória em sua pequena fábrica de expositores em acrílico do Seu Geovani.
@@ -27,7 +26,6 @@ function CardSobreNos() {
                         </Card.Body>
                     </Card>
                 </Col>
-            ))}
         </Row>
     );
 }
