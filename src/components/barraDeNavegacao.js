@@ -2,12 +2,6 @@ import { Image } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-
-const navbarStyles = {
-  display: 'flex',
-  justifyContent: 'center', // Centraliza horizontalmente
-};
 
 const linkStyles = {
   borderBottom: '2px solid',
@@ -26,22 +20,24 @@ const iconStyles = {
 
 function BarraDeNavegacao() {
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" style={navbarStyles}>
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" >
       <Container>
-        <Navbar.Brand href="/">
+        <Navbar.Brand href="/" style={{ marginRight: "120px" }}>
           <Image src="/images/logo/logo_01.png" height="30px" style={{ paddingRight: "10px" }} />Art Acril
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link style={linkStyles} href="https://drive.google.com/file/d/1AeQ3uyqqTskXBLwkAiUjro56C3RCeN1u/view?usp=sharing" target='_blank'>
               Catálogo 2023
             </Nav.Link>
+            {/*}
             <NavDropdown style={linkProductStyles} title="Produtos">
               <NavDropdown.Item href="#action/3.1">Bustos</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="#action/3.4">Sessão Indisponível</NavDropdown.Item>
             </NavDropdown>
+          */}
           </Nav>
           <Nav>
             <Nav.Link style={linkStyles} href="https://shopee.com.br/artacril" target='_blank'>
