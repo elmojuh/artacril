@@ -2,8 +2,10 @@
 
 export default function Footer() {
     const imageStyle = {
-        paddingLeft: '10px',
-        width: '40px'
+        paddingLeft: '5px',
+        width: '45px',
+        borderRadius: '50%',
+        
     }
     const texto = {
         color: '#ffffff'
@@ -17,7 +19,7 @@ export default function Footer() {
                     className="texto-branco"
                 >
                     Powered by: 
-                    <img style={imageStyle} src="images/foto.jpg" alt="@elmojuh"/></a>
+                    <img style={imageStyle} src="images/logoDev/logoPreta.jpg" alt="Desenvolvedor @elmojuh"/></a>
                 <a />
             </footer>
         </div>

@@ -1,7 +1,5 @@
-import Head from 'next/head'
 import { Container, Row, Col, Card, Button, Image } from 'react-bootstrap'
 import Carrossel from '../src/components/carrossel.js'
-import BarraDeNavegacao from '../src/components/barraDeNavegacao'
 
 
 export default function Home() {

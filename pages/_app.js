@@ -9,12 +9,15 @@ export default function MyApp({ Component, ...pageProps }) {
   return (
     <div>
       <Head>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Expositores em Acrílico" />
         <title>Art Acril</title>
       </Head>
       <GlobalStyle />
       <BarraDeNavegacao />
-      <Component {...pageProps}/>
-      <Footer/>
+      <Component {...pageProps} />
+      <Footer />
     </div>
   )
 }
