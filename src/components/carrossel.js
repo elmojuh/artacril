@@ -30,7 +30,7 @@ export default function Carrossel() {
           <Carousel.Item>
             <img
               className="d-block w-100 "
-              src="/images/produtos/Expositor_kit_03.jpg"
+              src="/images/produtos/Expositor_Busto_MAN_Preto_de_Lado_2.jpg"
               alt="Expositor_Kit_03"
             />
             <Carousel.Caption>
