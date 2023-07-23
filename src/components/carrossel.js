@@ -8,7 +8,7 @@ export default function Carrossel() {
         <Carousel.Item>
             <img
               className="d-block w-100 "
-              src="/images/produtos/Expositor_Busto_MAN_Preto_de_Lado_3.jpg"
+              src="/images/produtos/Expositor_Kit_1.jpg"
               alt="Expositor_Kit_01"
             />
             <Carousel.Caption>
@@ -19,7 +19,7 @@ export default function Carrossel() {
           <Carousel.Item>
             <img
               className="d-block w-100 "
-              src="/images/produtos/Expositor_kit_02.jpg"
+              src="/images/produtos/Expositor_Kit_2.jpg"
               alt="Expositor_Kit_02"
             />
             <Carousel.Caption>
@@ -30,7 +30,7 @@ export default function Carrossel() {
           <Carousel.Item>
             <img
               className="d-block w-100 "
-              src="/images/produtos/Expositor_kit_03.jpg"
+              src="/images/produtos/Expositor_Kit_3.jpg"
               alt="Expositor_Kit_03"
             />
             <Carousel.Caption>
