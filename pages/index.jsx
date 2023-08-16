@@ -1,4 +1,4 @@
-import { Container, Row, Col, Card, Button, Image } from 'react-bootstrap'
+import { Container} from 'react-bootstrap'
 import Carrossel from '../src/components/carrossel.js'
 
 

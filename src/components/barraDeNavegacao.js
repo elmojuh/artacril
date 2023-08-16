@@ -18,9 +18,17 @@ const iconStyles = {
   maxWidth: '30px',
 };
 
-function BarraDeNavegacao() {
+const fixedTop = {
+  position: 'fixed',
+  top: 0,
+  left: 0,
+  right: 0,
+  zIndex: 1000, /* Para garantir que a barra de navegação fique acima de outros elementos */
+}
+
+export default function BarraDeNavegacao() {
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" >
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" style={fixedTop}>
       <Container>
         <Navbar.Brand href="/" style={{ marginRight: "120px" }}>
           <Image src="/images/logo/logo_01.png" height="30px" style={{ paddingRight: "10px" }} />Art Acril
@@ -57,5 +65,3 @@ function BarraDeNavegacao() {
     </Navbar>
   );
 }
-
-export default BarraDeNavegacao;
