@@ -18,8 +18,8 @@ export default function Footer() {
                     rel="noopener noreferrer"
                     className="texto-branco"
                 >
-                    Powered by 2023: 
-                    <img style={imageStyle} src="images/logoDev/logoPreta.jpg" alt="Desenvolvedor @elmojuh"/></a>
+                    Powered in 2024 by: 
+                    <img style={imageStyle} src="images/logoDev/logoPreta.jpg" alt="Desenvolvedor @elmojuh"/></a> 
                 <a />
             </footer>
         </div>
