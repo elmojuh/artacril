@@ -1,64 +1,73 @@
 // controllers/produtoController.js
-const Produto = require('../models/Produto');
+const produtoService = require('../services/produtoService');
 
-exports.listarProdutos = async (req, res) => {
-  try {
-    const produtos = await Produto.find();
-    res.json(produtos);
-  } catch (error) {
-    console.error('Erro ao listar produtos:', error);
-    res.status(500).json({ error: 'Internal server error' });
-  }
-};
-
-// controllers/produtoController.js
-
-exports.criarProduto = async (req, res) => {
-  const { nome, descricao, preco, tipo, modelo, material, tamanho, peso, ativo } = req.body;
-  const novoProduto = new Produto({
-    nome,
-    descricao,
-    preco,
-    tipo,
-    modelo,
-    material,
-    tamanho,
-    peso,
-    ativo
-  });
-  try {
-    const produtoSalvo = await novoProduto.save();
-    res.status(201).json(produtoSalvo); // Retorna o objeto completo do produto criado
-  } catch (error) {
-    console.error('Erro ao criar produto:', error);
-    res.status(400).json({ error: 'Erro ao criar produto' });
-  }
-};
-
-
-
-exports.atualizarProduto = async (req, res) => {
-  try {
-    const produto = await Produto.findByIdAndUpdate(req.params.id, req.body, { new: true });
-    if (!produto) {
-      return res.status(404).json({ error: 'Produto não encontrado' });
+class ProdutoController {
+  async criarProduto(req, res) {
+    const produtoData = req.body;
+    try {
+      const produtoSalvo = await produtoService.criarProduto(produtoData);
+      res.status(201).json(produtoSalvo);
+    } catch (error) {
+      console.error('Erro ao criar produto:', error);
+      res.status(400).json({ error: 'Erro ao criar produto' });
     }
-    res.json(produto);
-  } catch (error) {
-    console.error('Erro ao atualizar produto:', error);
-    res.status(500).json({ error: 'Internal server error' });
   }
-};
 
-exports.excluirProduto = async (req, res) => {
-  try {
-    const produto = await Produto.findByIdAndDelete(req.params.id);
-    if (!produto) {
-      return res.status(404).json({ error: 'Produto não encontrado' });
+  async listarProdutos(req, res) {
+    try {
+      const produtos = await produtoService.listarProdutos();
+      res.json(produtos);
+    } catch (error) {
+      console.error('Erro ao listar produtos:', error);
+      res.status(500).json({ error: 'Internal server error' });
     }
-    res.json({ message: 'Produto excluído com sucesso' });
-  } catch (error) {
-    console.error('Erro ao excluir produto:', error);
-    res.status(500).json({ error: 'Internal server error' });
   }
-};
+
+  async getById(req, res) {
+    const { id } = req.params;
+    try {
+      const produto = await produtoService.buscarProdutoPorId(id);
+      res.json(produto);
+    } catch (error) {
+      console.error('Erro ao buscar produto por ID:', error);
+      if (error.message === 'Produto não encontrado') {
+        res.status(404).json({ error: 'Produto não encontrado' });
+      } else {
+        res.status(500).json({ error: 'Internal server error' });
+      }
+    }
+  }
+
+  async atualizarProduto(req, res) {
+    const { id } = req.params;
+    const novoProdutoData = req.body;
+    try {
+      const produtoAtualizado = await produtoService.atualizarProduto(id, novoProdutoData);
+      res.json(produtoAtualizado);
+    } catch (error) {
+      console.error('Erro ao atualizar produto:', error);
+      if (error.message === 'Produto não encontrado') {
+        res.status(404).json({ error: 'Produto não encontrado' });
+      } else {
+        res.status(500).json({ error: 'Internal server error' });
+      }
+    }
+  }
+
+  async excluirProdutoByID(req, res) {
+    const { id } = req.params;
+    try {
+      const mensagem = await produtoService.excluirProdutoById(id);
+      res.json(mensagem);
+    } catch (error) {
+      console.error('Erro ao excluir produto:', error);
+      if (error.message === 'Produto não encontrado') {
+        res.status(404).json({ error: 'Produto não encontrado' });
+      } else {
+        res.status(500).json({ error: 'Internal server error' });
+      }
+    }
+  }
+}
+
+module.exports = new ProdutoController();
