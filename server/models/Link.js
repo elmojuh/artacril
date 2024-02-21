@@ -1,11 +1,15 @@
 const mongoose = require('mongoose');
 
 const linkSchema = new mongoose.Schema({
-  dominio: {
+  nomeDominio: {
     type: String,
     required: false
   },
-  link: {
+  nomeProduto: {
+    type: String,
+    required: false
+  },
+  linkProduto: {
     type: String,
     required: false
   },

@@ -12,8 +12,9 @@ const produtoSchema = new mongoose.Schema({
   tamanho: String,
   peso: Number,
   ativo: Boolean,
-  cores: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Cor' }], // Use mongoose.Schema.Types.ObjectId para referenciar documentos no modelo Cor
-  links: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Link' }] // Use mongoose.Schema.Types.ObjectId para referenciar documentos no modelo Limk
+  cores: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Cor', required: false }],
+  links: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Link', required: false  }],
+  imagens: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Imagem', required: false }]
 });
 
 module.exports = mongoose.model('Produto', produtoSchema);

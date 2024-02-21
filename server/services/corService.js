@@ -1,61 +1,92 @@
 // services/corService.js
 const Cor = require('../models/Cor');
+const Produto = require('../models/Produto');
 
 class CorService {
-  async getAllCores() {
-    try {
-      const cores = await Cor.find();
-      return cores;
-    } catch (error) {
-      throw new Error('Failed to get cores');
-    }
-  }
+	async listarCores() {
+		const resposta = await Cor.find();
+		if (!resposta) {
+			throw new Error('Cores não encontradas');
+		}
+		return resposta;
+	}
 
-  async getCorById(id) {
-    try {
-      const cor = await Cor.findById(id);
-      if (!cor) {
-        throw new Error('Cor not found');
-      }
-      return cor;
-    } catch (error) {
-      throw new Error('Failed to get cor');
-    }
-  }
+	async buscarCorPorId(id) {
+		const cor = await Cor.findById(id);
+		if (!cor) {
+			throw new Error('Cor não encontrada');
+		}
+		return cor;
+	}
 
-  async createCor(corData) {
-    try {
-      const cor = new Cor(corData);
-      await cor.save();
-      return cor;
-    } catch (error) {
-      throw new Error('Failed to create cor');
-    }
-  }
+	async criarCor(corData) {
+		const cor = new Cor(corData);
+		await cor.save();
+		if (!cor) {
+			throw new Error('Erro ao criar cor');
+		}
+		return cor;
+	}
 
-  async updateCor(id, corData) {
-    try {
-      const cor = await Cor.findByIdAndUpdate(id, corData, { new: true });
-      if (!cor) {
-        throw new Error('Cor not found');
-      }
-      return cor;
-    } catch (error) {
-      throw new Error('Failed to update cor');
-    }
-  }
+	async atualizarCor(id, corData) {
+		const cor = await Cor.findByIdAndUpdate(id, corData, { new: true });
+		if (!cor) {
+			throw new Error('Cor não encontrada');
+		}
+		return cor;
+	}
 
-  async deleteCor(id) {
-    try {
-      const cor = await Cor.findByIdAndDelete(id);
-      if (!cor) {
-        throw new Error('Cor not found');
-      }
-      return { message: 'Cor deleted successfully' };
-    } catch (error) {
-      throw new Error('Failed to delete cor');
-    }
-  }
+	async excluirCorPorId(id) {
+		const cor = await Cor.findByIdAndDelete(id);
+		if (!cor) {
+			throw new Error('Cor não encontrada');
+		}
+		return { message: 'Cor deletada com Sucesso' };
+	}
+
+	async associarCorAoProduto(corId, produtoId) {
+		try {
+			const cor = await Cor.findById(corId);
+			if (!cor) {
+				throw new Error('Cor não encontrada');
+			}
+			const produto = await Produto.findById(produtoId);
+			if (!produto) {
+				throw new Error('Produto não encontrado');
+			}
+			produto.cores.push(corId);
+			await produto.save();
+			if (!produto) {
+				throw new Error('Erro ao associar cor ao produto');
+			}
+			return produto;
+		} catch (error) {
+			throw new Error('Erro ao associar cor ao produto: ' + error.message);
+		}
+	}
+
+
+	async desassociarCorDoProduto(corId, produtoId) {
+		try {
+			const cor = await Cor.findById(corId);
+			if (!cor) {
+				throw new Error('Cor não encontrada');
+			}
+			const produto = await Produto.findById(produtoId);
+			if (!produto) {
+				throw new Error('Produto não encontrado');
+			}
+			produto.cores = produto.cores.filter(cor => cor.toString() !== corId);
+			await produto.save();
+			if (!produto) {
+				throw new Error('Erro ao desassociar cor do produto');
+			}
+			return produto;
+		} catch (error) {
+			throw new Error('Erro ao desassociar cor do produto: ' + error.message);
+		}
+	}
+	
 }
 
 module.exports = new CorService();

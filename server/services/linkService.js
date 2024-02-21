@@ -1,44 +1,87 @@
 // services/linkService.js
 const Link = require('../models/Link');
+const Produto = require('../models/Produto');
 
 class LinkService {
-  async getAllLinks() {
+  async listarLinks() {
     try {
       return await Link.find();
     } catch (error) {
-      throw new Error('Failed to get links');
+      throw new Error('Links não encontrados');
     }
   }
 
-  async getLinkById(id) {
+  async buscarLinkPorId(id) {
     try {
       return await Link.findById(id);
     } catch (error) {
-      throw new Error('Failed to get link');
+      throw new Error('Link não encontrado');
     }
   }
 
-  async createLink(data) {
+  async criarLink(data) {
     try {
       return await Link.create(data);
     } catch (error) {
-      throw new Error('Failed to create link');
+      throw new Error('Erro ao criar link');
     }
   }
 
-  async updateLink(id, data) {
+  async atualizarLink(id, data) {
     try {
       return await Link.findByIdAndUpdate(id, data, { new: true });
     } catch (error) {
-      throw new Error('Failed to update link');
+      throw new Error('Erro ao atualizar link');
     }
   }
 
-  async deleteLink(id) {
+  async excluirLink(id) {
     try {
       return await Link.findByIdAndDelete(id);
     } catch (error) {
-      throw new Error('Failed to delete link');
+      throw new Error('Erro ao excluir link');
+    }
+  }
+
+  async associarLinkAoProduto(linkId, produtoId) {
+    try {
+      const link = await Link.findById(linkId);
+      if (!link) {
+        throw new Error('Link não encontrado');
+      }
+      const produto = await Produto.findById(produtoId);
+      if (!produto) {
+        throw new Error('Produto não encontrado');
+      }
+      produto.links.push(linkId);
+      await produto.save();
+      if (!produto) {
+        throw new Error('Erro ao associar link ao produto');
+      }
+      return produto;
+    } catch (error) {
+      throw new Error('Erro ao associar link ao produto: ' + error.message);
+    }
+  }
+
+  async desassociarLinkDoProduto(linkId, produtoId) {
+    try {
+      const link = await Link.findById(linkId);
+      if (!link) {
+        throw new Error('Link não encontrado');
+      }
+      const produto = await Produto.findById(produtoId);
+      if (!produto) {
+        throw new Error('Produto não encontrado');
+      }
+      produto.links = produto.links.filter((link) => link.toString() !== linkId);
+      await produto.save();
+      if (!produto) {
+        throw new Error('Erro ao desassociar link do produto');
+      }
+      return produto;
+    } catch (error) {
+      throw new Error('Erro ao desassociar link do produto: ' + error.message);
     }
   }
 }

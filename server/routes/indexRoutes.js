@@ -5,6 +5,7 @@ const router = express.Router();
 const produtoRoutes = require('./produtoRoutes');
 const corRoutes = require('./corRoutes');
 const linkRoutes = require('./linkRoutes');
+const imagemRoutes = require('./imagemRoutes');
 
 // Rota raiz
 router.get('/', (req, res) => {
@@ -15,6 +16,7 @@ router.get('/', (req, res) => {
 router.use('/produtos', produtoRoutes);
 router.use('/cores', corRoutes);
 router.use('/links', linkRoutes);
+router.use('/imagens', imagemRoutes);
 
 
 module.exports = router;
