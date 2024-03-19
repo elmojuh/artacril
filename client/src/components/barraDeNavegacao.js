@@ -36,8 +36,8 @@ export default function BarraDeNavegacao() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link style={linkStyles} href="https://drive.google.com/file/d/1AeQ3uyqqTskXBLwkAiUjro56C3RCeN1u/view?usp=sharing" target='_blank'>
-              Catálogo 2023
+            <Nav.Link style={linkStyles} href="https://drive.google.com/file/d/1N2zmegBS1VqXI_LmvcNbIrS8SPml3Dtp/view?usp=sharing" target='_blank'>
+              Catálogo 2024
             </Nav.Link>
             {/*}
             <NavDropdown style={linkProductStyles} title="Produtos">
